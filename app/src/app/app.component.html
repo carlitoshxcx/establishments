@@ -1,0 +1,18 @@
+<app-header></app-header>
+
+<div [hidden]="!loading">
+  <div class="page-content">
+    <div class="loading">
+      <div class="logo-wrapper">
+          <img class="light" src="../assets/img/theme/james-logo.svg" alt="James logo" srcset="../assets/img/theme/james-logo.svg">
+      </div>
+      <div class="loader">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div [hidden]="loading">
+  <router-outlet></router-outlet>
+</div>

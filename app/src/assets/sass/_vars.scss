@@ -1,0 +1,84 @@
+/* Theme colors */
+$background: #626c92;
+$primary: #873deb;
+$white: #ffffff;
+$accent: #28cc9b;
+$grey-1: #363840;
+$grey-2: #4c5164;
+$grey-3: #808080;
+$grey-4: #81879c;
+$grey-5: #7b7e8c;
+$grey-6: #e6e8f0;
+$grey-7: #f8f9fd;
+$grey-8: #f9f9f9;
+
+$colors: (
+  'background': $background,
+  'primary': $primary,
+  'white': $white,
+  'accent': $accent,
+  'grey-1': $grey-1,
+  'grey-2': $grey-2,
+  'grey-3': $grey-3,
+  'grey-4': $grey-4,
+  'grey-5': $grey-5,
+  'grey-6': $grey-6,
+  'grey-7': $grey-7,
+  'grey-8': $grey-8,
+);
+
+/* Font config */
+$font_primary: 'JFont';
+$font_config: (
+  line_height_padding: 0.33em
+);
+
+/* Font sizes */
+$font_sizes: (
+  1: 2.5em,
+  2: 2.16em,
+  3: 2em,
+  4: 1.83em,
+  5: 1.66em,
+  6: 1.5em,
+  7: 1.33em,
+  8: 1.166em,
+  9: 1em,
+  10: 0.75em,
+  11: 0.66em,
+  12: 0.58em,
+  13: 0.5em,
+  14: 0.41em,
+  15: 0.33em
+);
+
+/* Build */
+html {
+  /* Colors */
+  @each $name, $color in $colors {
+    /* make colors accessible via: var(--color-name) */
+    --#{$name}: #{$color};
+
+    /* class */
+    .#{$name} {
+      color: #{$color};
+    }
+
+    /* background */
+    .bg-#{$name} {
+      background-color: #{$color};
+    }
+  }
+
+  /* Fonts */
+  @each $number, $font_size in $font_sizes {
+    /* make font_sizes accessible via: var(--fs-number) */
+    --fs-#{$number}: #{$font_size};
+
+    /* class */
+    .fs-#{$number} {
+      font-size: $font_size;
+      line-height: $font_size + map-get($font_config, line_height_padding);
+    }
+  }
+}
