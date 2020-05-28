@@ -1,0 +1,135 @@
+// Theme colors
+$background: #626c92;
+$primary: #873deb;
+$white: #ffffff;
+$accent: #28cc9b;
+$grey-1: #363840;
+$grey-2: #4c5164;
+$grey-3: #808080;
+$grey-4: #81879c;
+$grey-5: #7b7e8c;
+$grey-6: #e6e8f0;
+$grey-7: #f8f9fd;
+$grey-8: #f9f9f9;
+
+$colors: (
+  'background': $background,
+  'primary': $primary,
+  'white': $white,
+  'accent': $accent,
+  'grey-1': $grey-1,
+  'grey-2': $grey-2,
+  'grey-3': $grey-3,
+  'grey-4': $grey-4,
+  'grey-5': $grey-5,
+  'grey-6': $grey-6,
+  'grey-7': $grey-7,
+  'grey-8': $grey-8,
+);
+
+// Font config
+$config: (
+  line_height_padding: 0.33em // 4px,
+);
+
+// Font sizes
+$font_sizes: (
+  1: 2.5em,
+  2: 2.16em,
+  3: 2em,
+  4: 1.83em,
+  5: 1.66em,
+  6: 1.5em,
+  7: 1.33em,
+  8: 1.166em,
+  9: 1em,
+  10: 0.75em,
+  11: 0.66em,
+  12: 0.58em,
+  13: 0.5em,
+  14: 0.41em,
+  15: 0.33em
+);
+
+// Build
+html {
+  // Colors
+  @each $name, $color in $colors {
+    // make colors accessible via: var(--color-name)
+    --#{$name}: #{$color};
+
+    // class
+    .#{$name} {
+      color: #{$color};
+    }
+
+    // background
+    .bg-#{$name} {
+      background-color: #{$color};
+    }
+  }
+
+  // Fonts
+  @each $number, $font_size in $font_sizes {
+    // make font_sizes accessible via: var(--fs-number)
+    --fs-#{$number}: #{$font_size};
+
+    // class
+    .fs-#{$number} {
+      font-size: $font_size;
+      line-height: $font_size + map-get($config, line_height_padding);
+    }
+  }
+}
+// Material Reset
+@import '~@angular/material/theming';
+
+// Theme
+$mat-theme-default: (
+  50: lighten($primary, 50),
+  100: lighten($primary, 40),
+  200: lighten($primary, 30),
+  300: lighten($primary, 20),
+  400: lighten($primary, 10),
+  500: $primary,
+  600: darken($primary, 10),
+  700: darken($primary, 20),
+  800: darken($primary, 30),
+  900: darken($primary, 40),
+  A100: lighten($primary, 70),
+  A200: lighten($primary, 15),
+  A400: darken($primary, 70),
+  A700: darken($primary, 80),
+  contrast: (
+    50: $grey-1,
+    100: $grey-1,
+    200: $grey-1,
+    300: $grey-8,
+    400: $grey-8,
+    500: $grey-8,
+    600: $grey-8,
+    700: $grey-8,
+    800: $grey-8,
+    900: $grey-8,
+    A100: $grey-1,
+    A200: $grey-8,
+    A400: $grey-8,
+    A700: $grey-8,
+  ),
+);
+
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$app-primary: mat-palette($mat-theme-default);
+$app-accent: mat-palette($mat-indigo, A200, A100, A400);
+// The warn palette is optional (defaults to red).
+$app-warn: mat-palette($mat-red);
+// Create the theme object (a Sass map containing all of the palettes).
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($app-theme);
