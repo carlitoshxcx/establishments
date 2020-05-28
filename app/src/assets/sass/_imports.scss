@@ -1,12 +1,14 @@
 /* Base theme */
-@import '~@angular/material/prebuilt-themes/purple-green.css';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+/* Mixins */
+@import 'mixins/border-radius';
+@import 'mixins/box-sizing';
+@import 'mixins/css3-prefix';
+@import 'mixins/transform';
+@import 'mixins/transition';
 
 /* Base Styles */
-@import 'base/mixins/css3-prefix';
-@import 'base/mixins/border-radius';
-@import 'base/mixins/box-sizing';
-@import 'base/mixins/transform';
-@import 'base/mixins/transition';
 @import 'base/buttons';
 @import 'base/fonts';
 @import 'base/forms';
@@ -16,6 +18,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
 
 /* Core */
+@import "core/reset";
 @import "core/header";
 
 /* Components */
