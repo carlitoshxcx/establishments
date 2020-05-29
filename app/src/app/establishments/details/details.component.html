@@ -1,24 +1,62 @@
-<p (click)="backToList()">details works!</p>
-
-{{details|json}}
-
-<div *ngIf="details">
-  <div @fade class="card-content">
-
-    <img width="74" height="74" src="{{details?.picture}}">
-
-    <div class="text-container">
-      <div class="text-line">
-        <span class="grey-2 bold fs-1 name">{{details?.name}}</span>
-        <span class="grey-4 regular fs-3 id">{{details?.id}}</span>
-      </div>
-      <div class="text-line">
-        <div class="grey-4 regular fs-2 state">{{details?.address.state}}</div>
-        <div class="grey-9 regular fs-2 divisor">|</div>
-        <div class="grey-4 regular fs-2 address">{{details?.address.street}}</div>
-        <div *ngIf="details?.address?.neighbourhood" class="grey-4 regular fs-2 address">, {{details?.address?.neighbourhood}}</div>
-        <div *ngIf="details?.address?.zipcode" class="grey-4 regular fs-2 zipcode"> - {{details?.address?.zipcode}}</div>
+<div *ngIf="loading">
+  <div class="page">
+    <div class="loading">
+      <div class="loader">
+        <div class="spinner"></div>
       </div>
     </div>
   </div>
+</div>
+
+<div *ngIf="!loading" class="container page">
+  <form class="details bg-white">
+    <!-- Header -->
+    <div @fade class="details-header">
+      <img
+        class="arrow"
+        width="24"
+        height="24"
+        alt="Go back to list"
+        title="Go back to list"
+        src="../../../assets/img/arrow-left.svg"
+        (click)="backToList()">
+
+      <img
+        class="picture"
+        width="74"
+        height="74"
+        [alt]="details?.name + ' picture'"
+        [title]="details?.name +' picture'"
+        [src]="details?.picture">
+
+      <div class="text-container">
+        <div class="text-line d-inline d-sm-inline-flex">
+          <h2 class="grey-2 bold fs-1 name">{{details?.name}}</h2>
+        </div>
+        <div class="text-line d-inline d-sm-inline-flex">
+          <p>
+            <span class="grey-4 regular fs-3 id">ID: {{details?.id}}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Basic information -->
+    <div class="row ml-3 mr-3">
+      <div class="col">
+        <h2 class="grey-2 regular fs-1 mt-4 mb-3 name">Informações Básicas</h2>
+        <hr>
+        
+      </div>
+    </div>
+
+    <!-- Finantial information -->
+    <div class="row mt-1 ml-3 mr-3">
+      <div class="col">
+        <h2 class="grey-2 regular fs-1 mt-4 mb-3 name">Financeiro</h2>
+        <hr>
+      </div>
+    </div>
+
+  </form>
 </div>
