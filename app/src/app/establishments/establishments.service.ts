@@ -17,18 +17,43 @@ export class EstablishmentsService {
 
   constructor(private httpClient: HttpClient) {
     /* Load establishments */
-    const establishments = localStorage.getItem('establishments');
-    console.log('this.establishments', this.establishments);
+    this.encodeJSON('establishments').then(key => {
+      const establishments = localStorage.getItem(key) || false;
 
-    if (establishments) {
-      this.hasEstablishments = true;
-      this.establishments = JSON.parse(establishments) || [];
-      setTimeout(() => {
-        this.loaded.next(this.establishments);
-      }, 100);
-    } else {
-      this.load().then(data => this.set(data));
-    }
+      if (establishments) {
+        this.decodeB64(establishments).then(decoded => {
+          const json = JSON.parse(decoded);
+
+          this.establishments = json || [];
+          this.hasEstablishments = true;
+          this.loaded.next(this.establishments);
+        });
+      } else {
+        this.load().then(data => this.set(data));
+      }
+    });
+  }
+
+  /**
+   * Encode json string to B64
+   * @returns Promise
+   */
+  private async encodeJSON(str: string): Promise<any> {
+    return new Promise((resolve) => {
+      const encoded = btoa(str);
+      resolve(encoded);
+    });
+  }
+
+  /**
+   * Decode B64 to json string
+   * @returns Promise
+   */
+  private async decodeB64(b64: string): Promise<any> {
+    return new Promise((resolve) => {
+      const decoded = atob(b64);
+      resolve(decoded);
+    });
   }
 
   /**
@@ -69,11 +94,17 @@ export class EstablishmentsService {
    */
   public async set(establishments: any[]): Promise<any> {
     return new Promise((resolve) => {
-      this.hasEstablishments = true;
-      this.establishments = this.parse(establishments);
-      localStorage.setItem('establishments', JSON.stringify(this.establishments));
-      this.loaded.next(this.establishments);
-      resolve();
+      const jsonString = JSON.stringify(establishments);
+
+      this.encodeJSON(jsonString).then(encoded => {
+        this.encodeJSON('establishments').then(key => {
+          this.hasEstablishments = true;
+          this.establishments = this.parse(establishments);
+          localStorage.setItem(key, encoded);
+          this.loaded.next(this.establishments);
+          resolve();
+        });
+      });
     });
   }
 
