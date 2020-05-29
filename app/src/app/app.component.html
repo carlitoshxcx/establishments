@@ -1,18 +1,29 @@
-<app-header></app-header>
+<main>
+  <app-header
+    logoAltText="James Logo"
+    logoTitle="Click here to view all establishments"
+    logoWidth="42"
+    logoHeight="21.32"
+    logoSrc="../assets/img/theme/james-logo.svg">
+  </app-header>
 
-<div [hidden]="!loading">
-  <div class="page-content">
-    <div class="loading">
-      <div class="logo-wrapper">
-          <img class="light" src="../assets/img/theme/james-logo.svg" alt="James logo" srcset="../assets/img/theme/james-logo.svg">
-      </div>
-      <div class="loader">
-        <div class="spinner"></div>
+  <div *ngIf="loading">
+    <div class="page-content">
+      <div class="loading">
+        <div class="logo-wrapper">
+          <img class="light"
+            alt="James logo"
+            src="../assets/img/theme/james-logo.svg" 
+            srcset="../assets/img/theme/james-logo.svg">
+        </div>
+        <div class="loader">
+          <div class="spinner"></div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div [hidden]="loading">
-  <router-outlet></router-outlet>
-</div>
+  <section *ngIf="!loading">
+    <router-outlet></router-outlet>
+  </section>
+</main>

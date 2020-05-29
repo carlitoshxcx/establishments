@@ -1,5 +1,5 @@
 /* Theme colors */
-$background: #626c92;
+$background: #f8f9fd;
 $primary: #873deb;
 $white: #ffffff;
 $accent: #28cc9b;
@@ -11,6 +11,7 @@ $grey-5: #7b7e8c;
 $grey-6: #e6e8f0;
 $grey-7: #f8f9fd;
 $grey-8: #f9f9f9;
+$grey-9: #d3d5e0;
 
 $colors: (
   'background': $background,
@@ -25,31 +26,37 @@ $colors: (
   'grey-6': $grey-6,
   'grey-7': $grey-7,
   'grey-8': $grey-8,
+  'grey-9': $grey-9
 );
 
 /* Font config */
 $font_primary: 'JFont';
-$font_config: (
-  line_height_padding: 0.33em
-);
 
 /* Font sizes */
 $font_sizes: (
-  1: 2.5em,
-  2: 2.16em,
-  3: 2em,
-  4: 1.83em,
-  5: 1.66em,
-  6: 1.5em,
-  7: 1.33em,
-  8: 1.166em,
-  9: 1em,
-  10: 0.75em,
-  11: 0.66em,
-  12: 0.58em,
-  13: 0.5em,
-  14: 0.41em,
-  15: 0.33em
+  1: 18px,
+  2: 15px,
+  3: 14px,
+  4: 12px,
+  5: 10px,
+  6: 9px
+);
+
+/* Font weight */
+$light: 100;
+$regular: 200;
+$medium: 300;
+$bold: 400;
+$extrabold: 500;
+$black: 600;
+
+$font_weights: (
+  'light': $light,
+  'regular': $regular,
+  'medium': $medium,
+  'bold': $bold,
+  'extrabold': $extrabold,
+  'black': $black
 );
 
 /* Build */
@@ -78,7 +85,14 @@ html {
     /* class */
     .fs-#{$number} {
       font-size: $font_size;
-      line-height: $font_size + map-get($font_config, line_height_padding);
+    }
+  }
+
+  /* Fonts weight */
+  @each $name, $font_weight in $font_weights {
+    /* class */
+    .#{$name} {
+      font-weight: $font_weight;
     }
   }
 }

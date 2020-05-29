@@ -1,42 +1,36 @@
 /* JFont WebFont */
 @font-face {
   font-family: 'JFont';
-  font-weight: 100;
+  font-weight: $light;
   src: url('./assets/sass/fonts/jfont/Rounded-Light.ttf');
 }
 
 @font-face {
   font-family: 'JFont';
-  font-weight: 200;
+  font-weight: $regular;
   src: url('./assets/sass/fonts/jfont/Rounded-Regular.ttf');
 }
 
 @font-face {
   font-family: 'JFont';
-  font-weight: 300;
+  font-weight: $medium;
   src: url('./assets/sass/fonts/jfont/Rounded-Medium.ttf');
 }
 
 @font-face {
   font-family: 'JFont';
-  font-weight: 400;
+  font-weight: $bold;
   src: url('./assets/sass/fonts/jfont/Rounded-Bold.ttf');
 }
 
 @font-face {
   font-family: 'JFont';
-  font-weight: 500;
+  font-weight: $extrabold;
   src: url('./assets/sass/fonts/jfont/Rounded-ExtraBold.ttf');
 }
 
 @font-face {
   font-family: 'JFont';
-  font-weight: 600;
+  font-weight: $black;
   src: url('./assets/sass/fonts/jfont/Rounded-Black.ttf');
-}
-
-@font-face {
-  font-family: 'JFont';
-  font-weight: 700;
-  src: url('./assets/sass/fonts/jfont/Rounded-Regular.ttf');
 }

@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { fade } from '../../shared/animations/fade';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  animations: [fade]
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
 
-  constructor() { }
+  @Input() data: any;
 
-  ngOnInit() {
+  constructor(private router: Router) { }
+
+  public openDetails({id}): void {
+    this.router.navigateByUrl(`${id}`);
   }
-
 }

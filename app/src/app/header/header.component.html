@@ -1,1 +1,13 @@
-<p>header works!</p>
+<header>
+  <a class="logo fs-10" href="/">
+    <span *ngIf="!logoSrc" [title]="logoTitle" [@wiggle]="true">{{logoAltText}}</span>
+
+    <img *ngIf="logoSrc"
+      [alt]="logoAltText"
+      [title]="logoTitle"
+      [width]="logoWidth"
+      [height]="logoHeight"
+      [src]="logoSrc"
+      [@wiggle]="true">
+  </a>
+</header>
