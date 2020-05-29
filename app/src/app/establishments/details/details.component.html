@@ -1,1 +1,24 @@
 <p (click)="backToList()">details works!</p>
+
+{{details|json}}
+
+<div *ngIf="details">
+  <div @fade class="card-content">
+
+    <img width="74" height="74" src="{{details?.picture}}">
+
+    <div class="text-container">
+      <div class="text-line">
+        <span class="grey-2 bold fs-1 name">{{details?.name}}</span>
+        <span class="grey-4 regular fs-3 id">{{details?.id}}</span>
+      </div>
+      <div class="text-line">
+        <div class="grey-4 regular fs-2 state">{{details?.address.state}}</div>
+        <div class="grey-9 regular fs-2 divisor">|</div>
+        <div class="grey-4 regular fs-2 address">{{details?.address.street}}</div>
+        <div *ngIf="details?.address?.neighbourhood" class="grey-4 regular fs-2 address">, {{details?.address?.neighbourhood}}</div>
+        <div *ngIf="details?.address?.zipcode" class="grey-4 regular fs-2 zipcode"> - {{details?.address?.zipcode}}</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,22 +1,28 @@
 <ng-container *ngIf="data">
-  <div @fade
+  <article @fade
     class="card-content"
     title="Click to edit details"
     (click)="openDetails(data)">
-    <img width="74" height="74" src="{{data?.picture}}">
+    <img
+      width="74"
+      height="74"
+      [alt]="data?.name + ' picture'"
+      [title]="data?.name +' picture'"
+      [src]="data?.picture">
 
     <div class="text-container">
       <div class="text-line">
-        <span class="grey-2 bold fs-1 name">{{data?.name}}</span>
-        <span class="grey-4 regular fs-3 id">{{data?.id}}</span>
+        <h2 class="grey-2 bold fs-1 name">{{data?.name}}</h2>
+        <h3 class="grey-4 regular fs-3 id">{{data?.id}}</h3>
       </div>
       <div class="text-line">
-        <div class="grey-4 regular fs-2 state">{{data?.address.state}}</div>
-        <div class="grey-9 regular fs-2 divisor">|</div>
-        <div class="grey-4 regular fs-2 address">{{data?.address.street}}</div>
-        <div *ngIf="data?.address?.neighbourhood" class="grey-4 regular fs-2 address">, {{data?.address?.neighbourhood}}</div>
-        <div *ngIf="data?.address?.zipcode" class="grey-4 regular fs-2 zipcode"> - {{data?.address?.zipcode}}</div>
+        <h4 class="grey-4 regular fs-2 state divisor-right">{{data?.address.state}}</h4>
+        <p>
+          <span class="grey-4 regular fs-2 address">{{data?.address.street}}</span>
+          <span *ngIf="data?.address?.neighbourhood" class="grey-4 regular fs-2 address">, {{data?.address?.neighbourhood}}</span>
+          <span *ngIf="data?.address?.zipcode" class="grey-4 regular fs-2 zipcode"> - {{data?.address?.zipcode}}</span>
+        </p>
       </div>
     </div>
-  </div>
+  </article>
 </ng-container>

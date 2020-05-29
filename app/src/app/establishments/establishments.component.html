@@ -8,6 +8,8 @@
   </div>
 </div>
 
-<div *ngIf="!loading" class="container establishments">
-  <app-list class="list" [items]="establishments"></app-list>
+<div *ngIf="!loading" class="container page">
+  <div class="establishments">
+    <app-list class="list" [items]="establishments"></app-list>
+  </div>
 </div>
