@@ -26,6 +26,7 @@
 
   .card-content {
     display: flex;
+    align-items: center;
     flex: 1;
 
     img {
@@ -50,17 +51,13 @@
         .name {
           margin-top: 5px;
           margin-left: 6px;
+          margin-bottom: 5px;
         }
         .id {
           margin-top: 7px;
           margin-left: 5px;
-        }
-        .divisor-left {
-          margin-left: 5px;
-          margin-right: 5px;
-          border-left: 1px solid $grey-9;
-          padding-left: 5px;
-        	max-height: 85%;
+          margin-bottom: 5px;
+          word-break: break-all;
         }
         .divisor-right {
           margin-left: 5px;
@@ -69,12 +66,19 @@
           padding-right: 5px;
         	max-height: 85%;
         }
-        p {
-          margin-bottom: 9px;
+        @media (max-width: 576px) {
+          .divisor-right {
+            border-right: none;
+          }
         }
         .state {
           margin-left: 6px;
+          margin-top: 5px;
           margin-bottom: 8px;
+        }
+        p {
+          margin-top: 5px;
+          margin-bottom: 9px;
         }
         .address:firstchild {
           margin-left: 6px;
