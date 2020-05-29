@@ -1,13 +1,19 @@
 <header>
-  <a class="logo fs-10" href="/">
-    <span *ngIf="!logoSrc" [title]="logoTitle" [@wiggle]="true">{{logoAltText}}</span>
+  <a class="logo" href="/">
+    <h1 class="fs-5">
+      <span *ngIf="!logoSrc"
+        [title]="logoTitle"
+        [@wiggle]="true">
+        {{logoAltText}}
+      </span>
 
-    <img *ngIf="logoSrc"
-      [alt]="logoAltText"
-      [title]="logoTitle"
-      [width]="logoWidth"
-      [height]="logoHeight"
-      [src]="logoSrc"
-      [@wiggle]="true">
+      <img *ngIf="logoSrc"
+        [alt]="logoAltText"
+        [title]="logoTitle"
+        [width]="logoWidth"
+        [height]="logoHeight"
+        [src]="logoSrc"
+        [@wiggle]="true">
+    </h1>
   </a>
 </header>

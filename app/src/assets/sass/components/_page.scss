@@ -1,8 +1,14 @@
 body {
   background-color: $background;
+
+  * {
+    @include box-sizing();
+  }
 }
 
 .page {
-  .page-content {
-  }
+  padding-left: 0px;
+  padding-right: 0px;
+
+  @include transition(all 0.5s ease-in-out);
 }

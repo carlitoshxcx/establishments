@@ -1,5 +1,5 @@
 <div *ngIf="loading">
-  <div class="page-content">
+  <div class="page">
     <div class="loading">
       <div class="loader">
         <div class="spinner"></div>
@@ -8,6 +8,8 @@
   </div>
 </div>
 
-<div *ngIf="!loading" class="container establishments">
-  <app-list class="list" [items]="establishments"></app-list>
+<div *ngIf="!loading" class="container page">
+  <div class="establishments">
+    <app-list class="list" [items]="establishments"></app-list>
+  </div>
 </div>

@@ -3,10 +3,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { EstablishmentsService } from '../establishments.service';
+import { fade } from '../../shared/animations/fade';
 
 @Component({
   selector: 'app-details',
-  templateUrl: './details.component.html'
+  templateUrl: './details.component.html',
+  animations: [fade]
 })
 export class DetailsComponent implements OnInit, OnDestroy {
   /* Current route */
@@ -15,7 +17,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   /* Current establishment details */
   public details: any;
 
-  /* Loading establishments? */
+  /* Loading details? */
   public loading = true;
 
   constructor(
@@ -36,6 +38,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
   }
 
   public backToList(): void {
-    this.router.navigateByUrl(`/`);
+    this.router.navigateByUrl('/');
   }
 }

@@ -1,9 +1,10 @@
 .card {
   @include border-radius(5px);
   @include transition(all 0.2s ease-out);
-  min-width: 600px;
   min-height: 90px;
   margin-top: 5px;
+  margin-left: 15px;
+	margin-right: 15px;
   border-radius: 5px;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
   border: solid 1px $grey-8;
@@ -18,13 +19,14 @@
   &:active,
   &:focus,
   &.active {
-    background-color: transparentize($accent, 0.95);
+    background-color: transparentize($primary, 0.95);
     box-shadow: 0 3px 3px 0 transparentize($primary, 0.9);
-    border: solid 1px $accent;
+    border: solid 1px $primary;
   }
 
   .card-content {
     display: flex;
+    align-items: center;
     flex: 1;
 
     img {
@@ -37,33 +39,53 @@
       padding: 8px;
       display: inline-flex;
       flex-direction: column;
+      flex: 1;
 
       .text-line {
         width: 100%;
         display: flex;
+        flex-basis: auto;
+        align-items: center;
         flex: 1;
 
         .name {
-          margin-top: 10px;
-          margin-left: 6px;
+          margin-top: 5px;
+          margin-left: 5px;
+          margin-bottom: 5px;
         }
         .id {
-          margin-top: 14px;
+          margin-top: 7px;
           margin-left: 5px;
+          margin-bottom: 5px;
+          word-break: break-all;
+        }
+        .divisor-right {
+          margin-left: 5px;
+          margin-right: 5px;
+          border-right: 1px solid $grey-9;
+          padding-right: 5px;
+        	max-height: 85%;
+        }
+        @media (max-width: 576px) {
+          .divisor-right {
+            border-right: none;
+          }
         }
         .state {
           margin-left: 6px;
+          margin-top: 5px;
+          margin-bottom: 8px;
         }
-        .divisor {
-          margin-left: 5px;
-          margin-right: 5px;
+        p {
+          margin-top: 5px;
+          margin-bottom: 9px;
         }
         .address:firstchild {
           margin-left: 6px;
         }
-        .zipcode {
-          margin-left: 6px;
-        }
+        // .zipcode {
+          // margin-left: 6px;
+        // }
       }
     }
   }
