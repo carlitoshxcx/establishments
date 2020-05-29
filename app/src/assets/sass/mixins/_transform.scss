@@ -1,9 +1,0 @@
-// Imports
-@import 'css3-prefix';
-
-// Transform
-// @param {List} $params - Params
-// @require {mixin} css3-prefix
-@mixin transform($params) {
-  @include css3-prefix('transform', $params);
-}

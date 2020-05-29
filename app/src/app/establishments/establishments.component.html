@@ -1,1 +1,13 @@
-<p>establishments works!</p>
+<div *ngIf="loading">
+  <div class="page-content">
+    <div class="loading">
+      <div class="loader">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!loading" class="container establishments">
+  <app-list class="list" [items]="establishments"></app-list>
+</div>

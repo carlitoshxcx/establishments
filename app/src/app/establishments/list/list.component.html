@@ -1,1 +1,3 @@
-<p>list works!</p>
+<ng-container *ngIf="items?.length">
+  <app-card *ngFor="let item of items" class="card bg-white" [data]="item"></app-card>
+</ng-container>

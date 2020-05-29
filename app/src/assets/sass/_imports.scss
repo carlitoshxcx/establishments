@@ -3,9 +3,7 @@
 
 /* Mixins */
 @import 'mixins/border-radius';
-@import 'mixins/box-sizing';
 @import 'mixins/css3-prefix';
-@import 'mixins/transform';
 @import 'mixins/transition';
 
 /* Base Styles */
@@ -19,8 +17,11 @@
 
 /* Core */
 @import "core/reset";
-@import "core/header";
 
 /* Components */
+@import "components/header";
+@import "components/page";
+@import "components/establishments";
 @import "components/card";
-@import "components/card-list";
+@import "components/list";
+@import "components/details";

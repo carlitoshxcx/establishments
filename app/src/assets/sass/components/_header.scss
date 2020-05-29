@@ -1,0 +1,19 @@
+header {
+  height: 50px;
+  background-color: $white;
+  text-align: center;
+
+  .logo {
+    @include transition(all 0.3s ease-in-out);
+    padding-top: 17px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-weight: $light;
+    color: $primary;
+    
+    &:hover {
+      color: $accent;
+    }
+  }
+}
