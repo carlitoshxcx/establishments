@@ -1,5 +1,8 @@
 <ng-container *ngIf="data">
-  <div class="card-content" title="Click to edit details" @fade>
+  <div @fade
+    class="card-content"
+    title="Click to edit details"
+    (click)="openDetails(data)">
     <img width="74" height="74" src="{{data?.picture}}">
 
     <div class="text-container">
