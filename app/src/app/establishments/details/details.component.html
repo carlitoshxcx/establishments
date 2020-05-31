@@ -9,7 +9,7 @@
 </div>
 
 <div *ngIf="!loading" class="container page">
-  <form class="details bg-white">
+  <form class="details bg-white" #detailsForm="ngForm">
     <!-- Header -->
     <div @fade class="details-header">
       <img
@@ -41,22 +41,138 @@
       </div>
     </div>
 
-    <!-- Basic information -->
-    <div class="row ml-3 mr-3">
+    <!-- Basic -->
+    <div @fade class="row ml-3 mr-3">
       <div class="col">
-        <h2 class="grey-2 regular fs-1 mt-4 mb-3 name">Informações Básicas</h2>
+        <h3 class="grey-2 regular fs-1 mt-4 mb-3 name">Informações Básicas</h3>
         <hr>
-        
+
+        <!-- Name, City, Address -->
+        <div class="row">
+          <div class="col-12 col-md-4 ease-out">
+            <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">Nome</h4>
+            <mat-form-field appearance="outline" class="w-100">
+              <!--  [(ngModel)]="detailsName" -->
+              <mat-select name="name">
+                <mat-option *ngFor="let item of ['Subway','Subway 2']" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-md-4 ease-out">
+            <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">Cidade</h4>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-select name="city" [(ngModel)]="detailsCity">
+                <mat-option *ngFor="let item of [{'city':'Curitiba'}, {'city':'Curitiba 2'}]" [value]="city">
+                  {{item.city}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-md-4 ease-out">
+            <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">Endereço</h4>
+            <mat-form-field appearance="outline" class="w-100">
+              <input matInput
+                name="streetAddress"
+                autocomplete="new-password"
+                [(ngModel)]="streetAddress">
+            </mat-form-field>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Finantial information -->
-    <div class="row mt-1 ml-3 mr-3">
+    <!-- Financial -->
+    <div @fade class="row mt-1 ml-3 mr-3">
       <div class="col">
         <h2 class="grey-2 regular fs-1 mt-4 mb-3 name">Financeiro</h2>
         <hr>
+
+        <!-- Bank, Account Type, CPF/CNPJ -->
+        <div class="row">
+          <div class="col-12 col-md-4 ease-out">
+            <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">Banco</h4>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-select name="bank" [(ngModel)]="detailsBank">
+                <mat-option *ngFor="let item of [{'bank':'Banco do Brasil'}, {'bank':'Banco do Brasil 2'}]" [value]="bank">
+                  {{item.bank}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-md-4 ease-out">
+            <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">Tipo de conta</h4>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-select name="accountType" [(ngModel)]="detailsAccountType">
+                <mat-option *ngFor="let item of [{'type':'Conta corrente'}, {'type':'Conta corrente 2'}]" [value]="type">
+                  {{item.type}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-md-4 ease-out">
+            <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">CPF / CNPJ</h4>
+            <mat-form-field appearance="outline" class="w-100">
+              <input matInput
+                name="document"
+                autocomplete="off"
+                [(ngModel)]="document">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- Agency, Account, Automatic withdrawal -->
+        <div class="row">
+          <div class="col-12 col-md-4 ease-out">
+            <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">Agência</h4>
+            <mat-form-field appearance="outline" class="w-50">
+              <input matInput
+                name="agency"
+                autocomplete="off"
+                [(ngModel)]="agency">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-25 ml-sm-3">
+              <input matInput
+                name="agencyDigit"
+                autocomplete="off"
+                [(ngModel)]="agencyDigit">
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-md-4 ease-out">
+            <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">Conta</h4>
+            <mat-form-field appearance="outline" class="w-50">
+              <input matInput
+                name="account"
+                autocomplete="off"
+                [(ngModel)]="account">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-25 ml-sm-3">
+              <input matInput
+                name="accountDigit"
+                autocomplete="off"
+                [(ngModel)]="accountDigit">
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-md-4 ease-out">
+            <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">Saque automático?</h4>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-select name="automaticWithdrawal" [(ngModel)]="automaticWithdrawal">
+                <mat-option *ngFor="let item of [{'value':'Sim'}, {'value':'Não'}]" [value]="value">
+                  {{item.value}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- Save Button -->
+        <div class="row pt-5 pb-1 mt-5 mb-4">
+          <div class="col text-right">
+            <button type="submit" class="d-inline-block btn">Salvar</button>
+          </div>
+        </div>
       </div>
     </div>
-
   </form>
 </div>

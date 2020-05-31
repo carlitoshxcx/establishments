@@ -1,10 +1,86 @@
-input[type="number"] {
-  -webkit-appearance: textfield;
-  -moz-appearance: textfield;
-  appearance: textfield;
+/* Mat form field style override */
+.page {
+  .mat-form-field-appearance-outline {
+    line-height: inherit;
+
+    :focus {
+      outline: none;
+    }
+
+    .mat-form-field-wrapper {
+      margin: 0;
+
+      .mat-form-field-flex {
+        margin-top: -9px;
+
+        .mat-form-field-outline {
+          @extend .bg-grey-10;
+          top: 9px;
+
+          .mat-form-field-outline-start {
+            border: 1px solid $grey-6;
+            border-right-style: none;
+          }
+
+          .mat-form-field-outline-end {
+            border: 1px solid $grey-6;
+            border-left-style: none;
+          }
+        }
+
+        /* :hover */
+        .mat-form-field-outline-thick {
+          .mat-form-field-outline-end,
+          .mat-form-field-outline-gap,
+          .mat-form-field-outline-start {
+            border-color: $primary;
+          }
+        }
+
+        .mat-form-field-infix {
+          @extend .fs-3;
+          font-family: $font_primary;
+          font-weight: $medium;
+          padding: 20px 0 11px 0;
+          border-top: 5px;
+          color: $grey-5;
+
+          .mat-select {
+            .mat-select-trigger {
+              .mat-select-value {
+                @extend .fs-3;
+                font-family: $font_primary;
+                font-weight: $medium;
+                color: $grey-5;
+              }
+
+              .mat-select-arrow-wrapper {
+                transform: none;
+
+                .mat-select-arrow {
+                  width: 13px;
+                  height: 13px;
+                  background-image: url("/assets/img/chevron-down.svg");
+                  background-position: center center;
+                  border: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+/* Mat select overlay */
+.cdk-overlay-container {
+  .mat-select-panel {
+    .mat-option {
+      @extend .fs-3;
+      font-family: $font_primary;
+      font-weight: $medium;
+      color: $grey-5;
+    }
+  }
 }
