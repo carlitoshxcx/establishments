@@ -49,7 +49,7 @@
 
         <!-- Name, City, Address -->
         <div class="row">
-          <div class="col-12 col-md-4 ease-out">
+          <div class="col-12 col-sm-4 ease-out">
             <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">Nome</h4>
             <mat-form-field appearance="outline" class="w-100">
               <!--  [(ngModel)]="detailsName" -->
@@ -60,7 +60,7 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <div class="col-12 col-md-4 ease-out">
+          <div class="col-12 col-sm-4 ease-out">
             <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">Cidade</h4>
             <mat-form-field appearance="outline" class="w-100">
               <mat-select name="city" [(ngModel)]="detailsCity">
@@ -70,7 +70,7 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <div class="col-12 col-md-4 ease-out">
+          <div class="col-12 col-sm-4 ease-out">
             <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">Endereço</h4>
             <mat-form-field appearance="outline" class="w-100">
               <input matInput
@@ -91,7 +91,7 @@
 
         <!-- Bank, Account Type, CPF/CNPJ -->
         <div class="row">
-          <div class="col-12 col-md-4 ease-out">
+          <div class="col-12 col-sm-4 ease-out">
             <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">Banco</h4>
             <mat-form-field appearance="outline" class="w-100">
               <mat-select name="bank" [(ngModel)]="detailsBank">
@@ -101,7 +101,7 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <div class="col-12 col-md-4 ease-out">
+          <div class="col-12 col-sm-4 ease-out">
             <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">Tipo de conta</h4>
             <mat-form-field appearance="outline" class="w-100">
               <mat-select name="accountType" [(ngModel)]="detailsAccountType">
@@ -111,7 +111,7 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <div class="col-12 col-md-4 ease-out">
+          <div class="col-12 col-sm-4 ease-out">
             <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">CPF / CNPJ</h4>
             <mat-form-field appearance="outline" class="w-100">
               <input matInput
@@ -124,7 +124,7 @@
 
         <!-- Agency, Account, Automatic withdrawal -->
         <div class="row">
-          <div class="col-12 col-md-4 ease-out">
+          <div class="col-12 col-sm-4 ease-out">
             <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">Agência</h4>
             <mat-form-field appearance="outline" class="w-50">
               <input matInput
@@ -132,14 +132,14 @@
                 autocomplete="off"
                 [(ngModel)]="agency">
             </mat-form-field>
-            <mat-form-field appearance="outline" class="w-25 ml-sm-3">
+            <mat-form-field appearance="outline" class="w-25 ml-3">
               <input matInput
                 name="agencyDigit"
                 autocomplete="off"
                 [(ngModel)]="agencyDigit">
             </mat-form-field>
           </div>
-          <div class="col-12 col-md-4 ease-out">
+          <div class="col-12 col-sm-4 ease-out">
             <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">Conta</h4>
             <mat-form-field appearance="outline" class="w-50">
               <input matInput
@@ -147,14 +147,14 @@
                 autocomplete="off"
                 [(ngModel)]="account">
             </mat-form-field>
-            <mat-form-field appearance="outline" class="w-25 ml-sm-3">
+            <mat-form-field appearance="outline" class="w-25 ml-3">
               <input matInput
                 name="accountDigit"
                 autocomplete="off"
                 [(ngModel)]="accountDigit">
             </mat-form-field>
           </div>
-          <div class="col-12 col-md-4 ease-out">
+          <div class="col-12 col-sm-4 ease-out">
             <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">Saque automático?</h4>
             <mat-form-field appearance="outline" class="w-100">
               <mat-select name="automaticWithdrawal" [(ngModel)]="automaticWithdrawal">
