@@ -9,7 +9,6 @@
   border-radius: 5px;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
   border: solid 1px $grey-8;
-  // display: flex;
 
   .details-header {
     display: flex;
@@ -65,5 +64,33 @@
     border-right: none;
     border-bottom: 1px solid $grey-6;
     border-left: none;
+  }
+
+  .btn {
+    @include border-radius(50px);
+    @include transition(all 0.2s ease-out);
+    min-width: 111px;
+    min-height: 41px;
+    background-color: transparentize($accent, 0.5);
+    border: none;
+    font-weight: $bold;
+    font-family: $font_primary;
+    text-transform: uppercase;
+    letter-spacing: 0.33px;
+    color: $white;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $accent;
+      box-shadow: 0 10px 10px 0 transparentize($primary, 0.85);
+    }
+    &:focus {
+      outline: none;
+    }
+    &:active {
+      background-color: transparentize($accent, 0.2);
+      box-shadow: 0 8px 8px 0 transparentize($primary, 0.8);
+      transform: translate(0px, 2px);
+    }
   }
 }

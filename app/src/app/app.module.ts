@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BootstrapModule } from './libs/bootstrap.module';
+import { MaterialModule } from './libs/material.module';
 import { HeaderModule } from './header/header.module';
 import { EstablishmentsModule } from './establishments/establishments.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     BootstrapModule,
+    MaterialModule,
     HeaderModule,
     EstablishmentsModule
   ],
