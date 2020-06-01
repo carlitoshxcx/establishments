@@ -2,9 +2,12 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { StorageService } from '@app/establishments/storage.service';
 import { Subscription } from 'rxjs';
 
+import { fade } from '@shared/animations/fade';
+
 @Component({
   selector: 'app-establishments',
-  templateUrl: './establishments.component.html'
+  templateUrl: './establishments.component.html',
+  animations: [fade]
 })
 export class EstablishmentsComponent implements OnInit, OnDestroy {
   /* Establishments loaded subscription */

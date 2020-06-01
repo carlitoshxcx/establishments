@@ -55,6 +55,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
       }
       init(id);
     });
+
+    window.scrollTo(0, 0);
   }
 
   ngOnDestroy(): void {

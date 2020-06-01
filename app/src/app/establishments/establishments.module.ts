@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { BootstrapModule } from '@libs/bootstrap.module';
 import { EstablishimentsRouterModule } from '@establishments/establishments-routing.module';
 import { CardModule } from '@establishments/card/card.module';
 import { DetailsModule } from '@establishments/details/details.module';
@@ -11,6 +12,7 @@ import { EstablishmentsComponent } from '@establishments/establishments.componen
   declarations: [EstablishmentsComponent],
   imports: [
     CommonModule,
+    BootstrapModule,
     EstablishimentsRouterModule,
     CardModule,
     DetailsModule,

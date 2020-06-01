@@ -7,24 +7,7 @@
     logoSrc="../assets/img/james-logo.svg">
   </app-header>
 
-  <div *ngIf="loading">
-    <div class="page-content">
-      <div class="loading">
-        <div class="logo-wrapper">
-          <img
-            class="light"
-            alt="James logo"
-            src="../assets/img/james-logo.svg"
-            srcset="../assets/img/james-logo.svg">
-        </div>
-        <div class="loader">
-          <div class="spinner"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <section *ngIf="!loading">
+  <section>
     <router-outlet></router-outlet>
   </section>
 </main>
