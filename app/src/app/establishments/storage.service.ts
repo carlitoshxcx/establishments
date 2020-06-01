@@ -8,19 +8,19 @@ import { Subject } from 'rxjs';
 export class StorageService {
   /* Establishments */
   public establishments: any[];
-  public establishmentsKey: string;
+  private establishmentsKey: string;
 
   /* Names */
   public names: any[];
-  public namesKey: string;
+  private namesKey: string;
 
   /* Cities */
   public cities: any[];
-  public citiesKey: string;
+  private citiesKey: string;
 
   /* banks */
   public banks: any[];
-  public banksKey: string;
+  private banksKey: string;
 
   /* Establishments loaded */
   public loaded = new Subject<any>();
@@ -49,7 +49,7 @@ export class StorageService {
         } else {
           this.load().then(data => {
             this.loadBanksList().then(banks => {
-              this.banks = banks;
+              this.banks = banks.map(bank => bank.Name);
               this.saveLocal(this.banksKey, this.banks);
               this.save(data);
             });
@@ -140,12 +140,17 @@ export class StorageService {
    */
   private parse(data: any[]): { establishments, names, cities } {
     const establishments = data.map(item => {
-      let [street, neighbourhood, city, zipcode] = item.address.split(',');
-      street = street.trim();
-      neighbourhood = neighbourhood.trim();
-      city = city.trim();
-      zipcode = zipcode.trim();
-      item.address = { street, neighbourhood, city, zipcode };
+      const [street, neighbourhood, city, zipcode] = item.address.split(',');
+      const formatted = `${street}, ${neighbourhood} - ${zipcode}`;
+
+      item.address = {
+        street: street.trim(),
+        neighbourhood: neighbourhood.trim(),
+        city: city.trim(),
+        zipcode: zipcode.trim(),
+        formatted
+      };
+
       return item;
     });
     const names = data.map(item => item.name);
@@ -171,6 +176,22 @@ export class StorageService {
       this.saveLocal(this.citiesKey, this.cities);
       this.hasEstablishments = true;
       this.loaded.next(this.establishments);
+      resolve();
+    });
+  }
+
+  /**
+   * Save establishments on local storage
+   * @param establishment Updated data
+   * @param index key in establishments
+   * @returns Promise
+   */
+  public async update(establishment, index): Promise<any> {
+    return new Promise((resolve) => {
+      console.log('index', index);
+      console.log('establishment', establishment);
+      this.establishments[index] = establishment;
+      this.saveLocal(this.establishmentsKey, this.establishments);
       resolve();
     });
   }

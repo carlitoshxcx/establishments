@@ -1,6 +1,9 @@
 /* Base theme */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
+/* Toaster */
+@import "~ngx-toastr/toastr.css"; 
+
 /* Mixins */
 @import 'mixins/border-radius';
 @import 'mixins/box-sizing';

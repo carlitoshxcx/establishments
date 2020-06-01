@@ -1,13 +1,13 @@
 <ng-container *ngIf="data">
   <article @fade
     class="card-content"
-    title="Click to edit details"
+    [placement]="'top-left'"
+    [ngbTooltip]="'Clique para editar'"
     (click)="openDetails(data)">
     <img
       width="74"
       height="74"
       [alt]="data?.name + ' picture'"
-      [title]="data?.name +' picture'"
       [src]="data?.picture">
 
     <div class="text-container">
