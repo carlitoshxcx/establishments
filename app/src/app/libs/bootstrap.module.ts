@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  imports: [ NgbModule ]
+  imports: [NgbTooltipModule],
+  exports: [NgbTooltipModule]
 })
 export class BootstrapModule { }

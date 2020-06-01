@@ -71,6 +71,14 @@
       }
     }
   }
+
+  .mat-form-field-type-mat-input {
+    .mat-form-field-wrapper {
+      .mat-form-field-flex {
+        padding-right: 1px;
+      }
+    }
+  }
 }
 
 /* Mat select overlay */

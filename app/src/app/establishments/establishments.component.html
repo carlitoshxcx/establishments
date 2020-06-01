@@ -1,7 +1,14 @@
 <div *ngIf="loading">
   <div class="page">
-    <div class="loading">
-      <div class="loader">
+    <div class="loading" [ngbTooltip]="'Carregando'">
+      <div class="loader" @fade>
+        <div class="logo-wrapper">
+          <img
+            [alt]="'James Logo'"
+            [width]="30"
+            [height]="16"
+            [src]="'../assets/img/james-logo.svg'">
+        </div>
         <div class="spinner"></div>
       </div>
     </div>

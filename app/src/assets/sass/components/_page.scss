@@ -7,10 +7,52 @@ body {
 }
 
 .page {
+  @include transition(all 0.5s ease-in-out);
   padding-left: 0px;
   padding-right: 0px;
 
-  @include transition(all 0.5s ease-in-out);
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .loading {
+    @include transition(all 0.5s ease-in-out);
+    text-align: center;
+    margin-top: 40vh;
+
+    .loader {
+      width: 40px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+
+      .logo-wrapper {
+        width: 50px;
+        position: absolute;
+
+        img {
+          max-width: 30px;
+          margin-top: 17px;
+        }
+      }
+
+      .spinner {
+        border: 2px solid transparentize($primary, 0.85);
+        border-radius: 50%;
+        border-top: 2px solid $primary;
+        width: 40px;
+        height: 40px;
+        box-shadow: 0 0px 40px 0 transparentize($primary, 0.8);
+        animation: spin 2s linear infinite;
+      }
+    }
+  }
+  @include loader(50);
 }
 
 .ease-out {

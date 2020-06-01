@@ -1,15 +1,15 @@
 <header>
-  <a class="logo" href="/">
+  <a class="logo" [routerLink]="'/'">
     <h1 class="fs-5">
       <span *ngIf="!logoSrc"
-        [title]="logoTitle"
+        [ngbTooltip]="logoTitle"
         [@wiggle]="true">
         {{logoAltText}}
       </span>
 
       <img *ngIf="logoSrc"
         [alt]="logoAltText"
-        [title]="logoTitle"
+        [ngbTooltip]="logoTitle"
         [width]="logoWidth"
         [height]="logoHeight"
         [src]="logoSrc"

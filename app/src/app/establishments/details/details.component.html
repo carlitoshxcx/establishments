@@ -9,33 +9,33 @@
 </div>
 
 <div *ngIf="!loading" class="container page">
-  <form class="details bg-white" #detailsForm="ngForm">
+  <form class="details bg-white" #detailsForm="ngForm" (ngSubmit)="save()">
     <!-- Header -->
     <div @fade class="details-header">
-      <img
+      <span [placement]="'top-left'" [ngbTooltip]="'Voltar a lista'">
+        <img
         class="arrow"
         width="24"
         height="24"
-        alt="Go back to list"
-        title="Go back to list"
         src="../../../assets/img/arrow-left.svg"
         (click)="backToList()">
+      </span>
 
       <img
         class="picture"
         width="74"
         height="74"
-        [alt]="details?.name + ' picture'"
-        [title]="details?.name +' picture'"
-        [src]="details?.picture">
+        [alt]="establishment?.name + ' picture'"
+        [title]="establishment?.name +' picture'"
+        [src]="establishment?.picture">
 
       <div class="text-container">
         <div class="text-line d-inline d-sm-inline-flex">
-          <h2 class="grey-2 bold fs-1 name">{{details?.name}}</h2>
+          <h2 class="grey-2 bold fs-1 name">{{establishment?.name}}</h2>
         </div>
         <div class="text-line d-inline d-sm-inline-flex">
           <p>
-            <span class="grey-4 regular fs-3 id">ID: {{details?.id}}</span>
+            <span class="grey-4 regular fs-3 id">ID: {{establishment?.id}}</span>
           </p>
         </div>
       </div>
@@ -52,10 +52,9 @@
           <div class="col-12 col-sm-4 ease-out">
             <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">Nome</h4>
             <mat-form-field appearance="outline" class="w-100">
-              <!--  [(ngModel)]="detailsName" -->
-              <mat-select name="name">
-                <mat-option *ngFor="let item of ['Subway','Subway 2']" [value]="item">
-                  {{item}}
+              <mat-select name="name" [(ngModel)]="establishment.name">
+                <mat-option *ngFor="let name of storageService.names" [value]="name">
+                  {{name}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -63,9 +62,9 @@
           <div class="col-12 col-sm-4 ease-out">
             <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">Cidade</h4>
             <mat-form-field appearance="outline" class="w-100">
-              <mat-select name="city" [(ngModel)]="detailsCity">
-                <mat-option *ngFor="let item of [{'city':'Curitiba'}, {'city':'Curitiba 2'}]" [value]="city">
-                  {{item.city}}
+              <mat-select name="city" [(ngModel)]="establishment.address.city">
+                <mat-option *ngFor="let city of storageService.cities" [value]="city">
+                  {{city}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -76,7 +75,7 @@
               <input matInput
                 name="streetAddress"
                 autocomplete="new-password"
-                [(ngModel)]="streetAddress">
+                [(ngModel)]="establishment.address.formatted">
             </mat-form-field>
           </div>
         </div>
@@ -94,9 +93,9 @@
           <div class="col-12 col-sm-4 ease-out">
             <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">Banco</h4>
             <mat-form-field appearance="outline" class="w-100">
-              <mat-select name="bank" [(ngModel)]="detailsBank">
-                <mat-option *ngFor="let item of [{'bank':'Banco do Brasil'}, {'bank':'Banco do Brasil 2'}]" [value]="bank">
-                  {{item.bank}}
+              <mat-select name="bank" [(ngModel)]="establishment.bank">
+                <mat-option *ngFor="let bank of storageService.banks" [value]="bank">
+                  {{bank}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -104,9 +103,9 @@
           <div class="col-12 col-sm-4 ease-out">
             <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">Tipo de conta</h4>
             <mat-form-field appearance="outline" class="w-100">
-              <mat-select name="accountType" [(ngModel)]="detailsAccountType">
-                <mat-option *ngFor="let item of [{'type':'Conta corrente'}, {'type':'Conta corrente 2'}]" [value]="type">
-                  {{item.type}}
+              <mat-select name="accountType" [(ngModel)]="establishment.accountType">
+                <mat-option *ngFor="let accountType of ['Conta corrente', 'Conta poupança']" [value]="accountType">
+                  {{accountType}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -117,7 +116,10 @@
               <input matInput
                 name="document"
                 autocomplete="off"
-                [(ngModel)]="document">
+                [(ngModel)]="establishment.document"
+                (keydown)="establishment.document = validateDocument($event.target.value)"
+                (keyup)="establishment.document = validateDocument($event.target.value)"
+                (blur)="establishment.document = validateDocument($event.target.value)">
             </mat-form-field>
           </div>
         </div>
@@ -130,13 +132,21 @@
               <input matInput
                 name="agency"
                 autocomplete="off"
-                [(ngModel)]="agency">
+                maxlength="4"
+                [(ngModel)]="establishment.agency"
+                (keydown)="establishment.agency = utils.AllowOnlyNumbers($event.target.value)"
+                (keyup)="establishment.agency = utils.AllowOnlyNumbers($event.target.value)"
+                (blur)="establishment.agency = utils.AllowOnlyNumbers($event.target.value)">
             </mat-form-field>
             <mat-form-field appearance="outline" class="w-25 ml-3">
               <input matInput
                 name="agencyDigit"
                 autocomplete="off"
-                [(ngModel)]="agencyDigit">
+                maxlength="1"
+                [(ngModel)]="establishment.agencyDigit"
+                (keydown)="establishment.agencyDigit = utils.AllowOnlyNumbers($event.target.value)"
+                (keyup)="establishment.agencyDigit = utils.AllowOnlyNumbers($event.target.value)"
+                (blur)="establishment.agencyDigit = utils.AllowOnlyNumbers($event.target.value)">
             </mat-form-field>
           </div>
           <div class="col-12 col-sm-4 ease-out">
@@ -145,21 +155,29 @@
               <input matInput
                 name="account"
                 autocomplete="off"
-                [(ngModel)]="account">
+                maxlength="5"
+                [(ngModel)]="establishment.account"
+                (keydown)="establishment.account = utils.AllowOnlyNumbers($event.target.value)"
+                (keyup)="establishment.account = utils.AllowOnlyNumbers($event.target.value)"
+                (blur)="establishment.account = utils.AllowOnlyNumbers($event.target.value)">
             </mat-form-field>
             <mat-form-field appearance="outline" class="w-25 ml-3">
               <input matInput
                 name="accountDigit"
                 autocomplete="off"
-                [(ngModel)]="accountDigit">
+                maxlength="1"
+                [(ngModel)]="establishment.accountDigit"
+                (keydown)="establishment.accountDigit = utils.AllowOnlyNumbers($event.target.value)"
+                (keyup)="establishment.accountDigit = utils.AllowOnlyNumbers($event.target.value)"
+                (blur)="establishment.accountDigit = utils.AllowOnlyNumbers($event.target.value)">
             </mat-form-field>
           </div>
           <div class="col-12 col-sm-4 ease-out">
             <h4 class="grey-2 regular fs-3 mt-3 mb-3 name">Saque automático?</h4>
             <mat-form-field appearance="outline" class="w-100">
-              <mat-select name="automaticWithdrawal" [(ngModel)]="automaticWithdrawal">
-                <mat-option *ngFor="let item of [{'value':'Sim'}, {'value':'Não'}]" [value]="value">
-                  {{item.value}}
+              <mat-select name="automaticWithdrawal" [(ngModel)]="establishment.automaticWithdrawal">
+                <mat-option *ngFor="let enabled of ['Sim', 'Não']" [value]="enabled">
+                  {{enabled}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -169,7 +187,7 @@
         <!-- Save Button -->
         <div class="row pt-5 pb-1 mt-5 mb-4">
           <div class="col text-right">
-            <button type="submit" class="d-inline-block btn">Salvar</button>
+            <button type="submit" class="d-inline-block btn" [ngbTooltip]="'Salvar informações localmente'">Salvar</button>
           </div>
         </div>
       </div>

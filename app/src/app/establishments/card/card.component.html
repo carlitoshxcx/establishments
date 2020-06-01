@@ -1,13 +1,13 @@
 <ng-container *ngIf="data">
   <article @fade
     class="card-content"
-    title="Click to edit details"
+    [placement]="'top-left'"
+    [ngbTooltip]="'Clique para editar'"
     (click)="openDetails(data)">
     <img
       width="74"
       height="74"
       [alt]="data?.name + ' picture'"
-      [title]="data?.name +' picture'"
       [src]="data?.picture">
 
     <div class="text-container">
@@ -16,7 +16,7 @@
         <h3 class="grey-4 regular fs-3 id">{{data?.id}}</h3>
       </div>
       <div class="text-line d-inline d-sm-inline-flex">
-        <h4 class="grey-4 regular fs-2 state divisor-right">{{data?.address.state}}</h4>
+        <h4 class="grey-4 regular fs-2 city divisor-right">{{data?.address.city}}</h4>
         <p class="ml-2 ml-sm-0">
           <span class="grey-4 regular fs-2 address">{{data?.address.street}}</span>
           <span *ngIf="data?.address?.neighbourhood" class="grey-4 regular fs-2 address">, {{data?.address?.neighbourhood}}</span>

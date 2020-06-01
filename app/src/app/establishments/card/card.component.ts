@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { fade } from '../../shared/animations/fade';
+import { fade } from '@shared/animations/fade';
 import { Router } from '@angular/router';
 
 @Component({
