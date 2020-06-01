@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { EstablishmentsService } from './establishments.service';
+import { EstablishmentsService } from '@establishments/establishments.service';
 import { Subscription } from 'rxjs';
 
 @Component({

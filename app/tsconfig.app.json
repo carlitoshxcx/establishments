@@ -1,16 +1,50 @@
 {
-  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "./out-tsc/app",
-    "types": []
+    "baseUrl": "./",
+    "module": "esnext",
+    "target": "es2015",
+    "outDir": "./dist/out-tsc",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "downlevelIteration": true,
+    "declaration": false,
+    "sourceMap": true,
+    "types": [
+      "node",
+      "jasmine"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "@node/*": [
+        "node_modules/*"
+      ],
+      "@app/*": [
+        "src/app/*"
+      ],
+      "@libs/*": [
+        "src/app/libs/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ],
+      "@img/*": [
+        "src/assets/img/*"
+      ],
+      "@header/*": [
+        "src/app/header/*"
+      ],
+      "@establishments/*": [
+        "src/app/establishments/*"
+      ]
+    }
   },
-  "files": [
-    "src/main.ts",
-    "src/polyfills.ts"
-  ],
-  "include": [
-    "src/**/*.ts"
-  ],
   "exclude": [
     "src/test.ts",
     "src/**/*.spec.ts"

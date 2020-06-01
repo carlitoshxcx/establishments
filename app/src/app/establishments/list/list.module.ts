@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CardModule } from '../card/card.module';
-import { ListComponent } from './list.component';
+import { CardModule } from '@establishments/card/card.module';
+import { ListComponent } from '@establishments/list/list.component';
 
 @NgModule({
   declarations: [ListComponent],

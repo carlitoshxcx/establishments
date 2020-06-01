@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { EstablishmentsService } from '../establishments.service';
-import { fade } from '../../shared/animations/fade';
+import { EstablishmentsService } from '@establishments/establishments.service';
+import { fade } from '@shared/animations/fade';
 
 @Component({
   selector: 'app-details',
