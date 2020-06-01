@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { EstablishmentsService } from '@establishments/establishments.service';
+import { StorageService } from '@app/establishments/storage.service';
 import { fade } from '@shared/animations/fade';
 
 @Component({
@@ -11,6 +11,9 @@ import { fade } from '@shared/animations/fade';
   animations: [fade]
 })
 export class DetailsComponent implements OnInit, OnDestroy {
+  /* Establishments loaded subscription */
+  private establishmentsLoaded$: Subscription;
+
   /* Current route */
   private activatedRoute$: Subscription;
 
@@ -23,17 +26,26 @@ export class DetailsComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private establishmentsService: EstablishmentsService
+    private storageService: StorageService
   ) { }
 
   ngOnInit() {
-    this.activatedRoute$ = this.activatedRoute.params.subscribe(({ id }) => {
-      this.details = this.establishmentsService.establishments.find(establishment => establishment.id === id);
+    const getDetails = (id: string) => {
+      this.details = this.storageService.establishments.find(establishment => establishment.id === id);
       this.loading = false;
+    };
+
+    this.activatedRoute$ = this.activatedRoute.params.subscribe(({ id }) => {
+      if (!this.storageService.hasEstablishments) {
+        this.establishmentsLoaded$ = this.storageService.loaded.subscribe(() => getDetails(id));
+        return;
+      }
+      getDetails(id);
     });
   }
 
   ngOnDestroy(): void {
+    this.establishmentsLoaded$.unsubscribe();
     this.activatedRoute$.unsubscribe();
   }
 

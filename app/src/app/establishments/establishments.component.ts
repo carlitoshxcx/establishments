@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { EstablishmentsService } from '@establishments/establishments.service';
+import { StorageService } from '@app/establishments/storage.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -16,14 +16,14 @@ export class EstablishmentsComponent implements OnInit, OnDestroy {
   /* Loading establishments? */
   public loading = true;
 
-  constructor(private establishmentsService: EstablishmentsService) { }
+  constructor(private storageService: StorageService) { }
 
   ngOnInit() {
-    if (this.establishmentsService.hasEstablishments) {
-      this.establishments = this.establishmentsService.establishments;
+    if (this.storageService.hasEstablishments) {
+      this.establishments = this.storageService.establishments;
       this.loading = false;
     } else {
-      this.establishmentsLoaded$ = this.establishmentsService.loaded.subscribe(establishments => {
+      this.establishmentsLoaded$ = this.storageService.loaded.subscribe(establishments => {
         this.establishments = establishments;
         this.loading = false;
       });
