@@ -1,6 +1,6 @@
-# 🏆Front-end Challenge for [James Delivery](https://github.com/james-delivery/frontend-challenge)
+# 🏆 Front-end Challenge for [James Delivery](https://github.com/james-delivery/frontend-challenge)
 
-### Automatic Documetation:
+### Automatic Documentation:
 1 - Access app folder `cd app`.
 2 - Run `npm run compodoc`. Open `documentation/index.html` on browser.
 
