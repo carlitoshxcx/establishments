@@ -176,7 +176,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/establishments/establishments.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/establishments/establishments.component.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -245,8 +245,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="33"
-                            class="link-to-prism">src/app/establishments/establishments.component.ts:33</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/app/establishments/establishments.component.ts:36</a></div>
                 </td>
             </tr>
 
@@ -284,8 +284,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="21"
-                            class="link-to-prism">src/app/establishments/establishments.component.ts:21</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">src/app/establishments/establishments.component.ts:24</a></div>
                 </td>
             </tr>
 
@@ -328,7 +328,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/establishments/establishments.component.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/establishments/establishments.component.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -356,7 +356,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/establishments/establishments.component.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/establishments/establishments.component.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -383,7 +383,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/establishments/establishments.component.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/establishments/establishments.component.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -400,9 +400,12 @@
 import { StorageService } from &#x27;@app/establishments/storage.service&#x27;;
 import { Subscription } from &#x27;rxjs&#x27;;
 
+import { fade } from &#x27;@shared/animations/fade&#x27;;
+
 @Component({
   selector: &#x27;app-establishments&#x27;,
-  templateUrl: &#x27;./establishments.component.html&#x27;
+  templateUrl: &#x27;./establishments.component.html&#x27;,
+  animations: [fade]
 })
 export class EstablishmentsComponent implements OnInit, OnDestroy {
   /* Establishments loaded subscription */
@@ -438,8 +441,15 @@ export class EstablishmentsComponent implements OnInit, OnDestroy {
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div *ngIf&#x3D;&quot;loading&quot;&gt;
   &lt;div class&#x3D;&quot;page&quot;&gt;
-    &lt;div class&#x3D;&quot;loading&quot;&gt;
-      &lt;div class&#x3D;&quot;loader&quot;&gt;
+    &lt;div class&#x3D;&quot;loading&quot; [ngbTooltip]&#x3D;&quot;&#x27;Carregando&#x27;&quot;&gt;
+      &lt;div class&#x3D;&quot;loader&quot; @fade&gt;
+        &lt;div class&#x3D;&quot;logo-wrapper&quot;&gt;
+          &lt;img
+            [alt]&#x3D;&quot;&#x27;James Logo&#x27;&quot;
+            [width]&#x3D;&quot;30&quot;
+            [height]&#x3D;&quot;16&quot;
+            [src]&#x3D;&quot;&#x27;../assets/img/james-logo.svg&#x27;&quot;&gt;
+        &lt;/div&gt;
         &lt;div class&#x3D;&quot;spinner&quot;&gt;&lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -479,7 +489,7 @@ export class EstablishmentsComponent implements OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div *ngIf="loading">  <div class="page">    <div class="loading">      <div class="loader">        <div class="spinner"></div>      </div>    </div>  </div></div><div *ngIf="!loading" class="container page">  <div class="establishments">    <app-list class="list" [items]="establishments"></app-list>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div *ngIf="loading">  <div class="page">    <div class="loading" [ngbTooltip]="\'Carregando\'">      <div class="loader" @fade>        <div class="logo-wrapper">          <img            [alt]="\'James Logo\'"            [width]="30"            [height]="16"            [src]="\'../assets/img/james-logo.svg\'">        </div>        <div class="spinner"></div>      </div>    </div>  </div></div><div *ngIf="!loading" class="container page">  <div class="establishments">    <app-list class="list" [items]="establishments"></app-list>  </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'DetailsComponent', 'selector': 'app-details'},{'name': 'EstablishmentsComponent', 'selector': 'app-establishments'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListComponent', 'selector': 'app-list'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'EstablishmentsComponent'};
