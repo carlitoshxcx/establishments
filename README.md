@@ -1,5 +1,7 @@
 # 🏆 Front-end Challenge for [James Delivery](https://github.com/james-delivery/frontend-challenge)
 
+##### 🌎 App is deployed here: [Establishments](https://establishments.now.sh/)
+
 ### Automatic Documentation:
 1 - Access app folder `cd app`.
 
