@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "puppeteer": "node puppeteer/index.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -11,6 +12,7 @@
     "compodoc": "npx compodoc -p tsconfig.app.json",
     "commit": "git-cz"
   },
+  "author": "Carlos Eduardo Gomes <carlitoshxcx@gmail.com>",
   "private": false,
   "dependencies": {
     "@angular/animations": "8.2.0",
@@ -54,7 +56,8 @@
     "typescript": "3.5.3",
     "commitizen": "4.1.2",
     "cz-conventional-changelog": "3.2.0",
-    "@compodoc/compodoc": "1.1.10"
+    "@compodoc/compodoc": "1.1.10",
+    "puppeteer": "^3.0.4"
   },
   "config": {
     "commitizen": {
