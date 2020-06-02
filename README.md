@@ -2,6 +2,7 @@
 
 ### Automatic Documentation:
 1 - Access app folder `cd app`.
+
 2 - Run `npm run compodoc`. Open `documentation/index.html` on browser.
 
 ### User Stories
