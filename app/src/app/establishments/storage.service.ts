@@ -71,7 +71,7 @@ export class StorageService {
    * Load banks data
    */
   private async loadBanksList(): Promise<any> {
-    const url = `https://raw.githubusercontent.com/guibranco/BancosBrasileiros/master/bancos.json`;
+    const url = `https://my-json-server.typicode.com/james-delivery/frontend-challenge/db`;
     return this.httpClient.get<any>(url).toPromise();
   }
 
