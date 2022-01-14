@@ -48,8 +48,8 @@ export class StorageService {
           this.loaded.next(this.establishments);
         } else {
           this.load().then(data => {
-            this.loadBanksList().then(banks => {
-              this.banks = banks.map(bank => bank.Name);
+            this.loadBanksList().then({establishments} => {
+              this.banks = establishments.map(establishment => establishment.Name);
               this.saveLocal(this.banksKey, this.banks);
               this.save(data);
             });
